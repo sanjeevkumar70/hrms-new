@@ -1,0 +1,99 @@
+// ========== Color Palette ==========
+$primary: #1e40af;
+$primary-light: #2563eb;
+$primary-dark: #1e3a8a;
+$secondary: #0d9488;
+$secondary-light: #14b8a6;
+
+$success: #10b981;
+$danger: #f43f5e;
+$warning: #f59e0b;
+$info: #0ea5e9;
+
+$slate-50: #f8fafc;
+$slate-100: #f1f5f9;
+$slate-200: #e2e8f0;
+$slate-300: #cbd5e1;
+$slate-400: #94a3b8;
+$slate-500: #64748b;
+$slate-600: #475569;
+$slate-700: #334155;
+$slate-800: #1e293b;
+$slate-900: #0f172a;
+
+$gradient-primary: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+$gradient-secondary: linear-gradient(135deg, #14b8a6 0%, #0d9488 100%);
+$gradient-success: linear-gradient(135deg, #34d399 0%, #10b981 100%);
+$gradient-danger: linear-gradient(135deg, #fb7185 0%, #f43f5e 100%);
+$gradient-warning: linear-gradient(135deg, #fbbf24 0%, #f59e0b 100%);
+$gradient-info: linear-gradient(135deg, #38bdf8 0%, #0ea5e9 100%);
+$gradient-dark: linear-gradient(135deg, #334155 0%, #0f172a 100%);
+
+// ========== Typography ==========
+$font-display: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+$font-body: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+
+$fs-xs: 0.75rem;
+$fs-sm: 0.875rem;
+$fs-base: 1rem;
+$fs-md: 1.125rem;
+$fs-lg: 1.375rem;
+$fs-xl: 1.75rem;
+$fs-2xl: 2.25rem;
+$fs-3xl: 3rem;
+
+// ========== Spacing ==========
+$space-1: 0.25rem;
+$space-2: 0.5rem;
+$space-3: 0.75rem;
+$space-4: 1rem;
+$space-5: 1.5rem;
+$space-6: 2rem;
+$space-7: 3rem;
+$space-8: 4rem;
+
+// ========== Radius ==========
+$radius-sm: 6px;
+$radius-md: 10px;
+$radius-lg: 16px;
+$radius-xl: 20px;
+$radius-pill: 999px;
+
+// ========== Shadows ==========
+$shadow-sm: 0 1px 2px rgba(15, 23, 42, 0.05);
+$shadow-md: 0 4px 12px rgba(15, 23, 42, 0.06);
+$shadow-lg: 0 10px 30px rgba(15, 23, 42, 0.08);
+$shadow-xl: 0 20px 50px rgba(15, 23, 42, 0.12);
+$shadow-glow: 0 0 40px rgba(37, 99, 235, 0.18);
+
+// ========== Layout ==========
+$sidebar-width: 260px;
+$sidebar-width-collapsed: 72px;
+$navbar-height: 70px;
+$footer-height: 56px;
+$content-max-width: 1600px;
+
+// ========== Breakpoints ==========
+$bp-sm: 480px;
+$bp-md: 768px;
+$bp-lg: 1024px;
+$bp-xl: 1440px;
+
+// ========== Transitions ==========
+$trans-fast: 0.15s ease;
+$trans-base: 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+$trans-slow: 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+
+// ========== Status Colors ==========
+$status-colors: (
+  present: $success,
+  absent: $danger,
+  late: $warning,
+  leave: $info,
+  halfday: #a855f7,
+  wfh: $secondary,
+  pending: $warning,
+  approved: $success,
+  rejected: $danger,
+  cancelled: $slate-400
+);

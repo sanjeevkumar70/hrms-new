@@ -1,0 +1,133 @@
+@use 'variables' as *;
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+@mixin flex-column-center {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin glass($opacity: 0.7, $blur: 16px) {
+  background: rgba(255, 255, 255, $opacity);
+  backdrop-filter: blur($blur);
+  -webkit-backdrop-filter: blur($blur);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+}
+
+@mixin glass-dark($opacity: 0.5, $blur: 16px) {
+  background: rgba(15, 23, 42, $opacity);
+  backdrop-filter: blur($blur);
+  -webkit-backdrop-filter: blur($blur);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+@mixin card-base {
+  background: #fff;
+  border-radius: $radius-lg;
+  box-shadow: $shadow-md;
+  border: 1px solid $slate-100;
+  transition: transform $trans-base, box-shadow $trans-base;
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: $shadow-lg;
+  }
+}
+
+@mixin btn-base {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: $space-2;
+  padding: 0.625rem 1.25rem;
+  border-radius: $radius-pill;
+  font-family: $font-body;
+  font-weight: 500;
+  font-size: $fs-sm;
+  line-height: 1;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all $trans-base;
+  min-height: 40px;
+  &:hover {
+    transform: translateY(-1px);
+  }
+  &:active {
+    transform: translateY(0);
+  }
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none;
+  }
+}
+
+@mixin btn-gradient($gradient) {
+  @include btn-base;
+  background: $gradient;
+  color: #fff;
+  box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+  &:hover {
+    box-shadow: 0 6px 20px rgba(0,0,0,0.18);
+    filter: brightness(1.08);
+  }
+}
+
+@mixin text-gradient($gradient) {
+  background: $gradient;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+@mixin badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.75rem;
+  font-size: $fs-xs;
+  font-weight: 600;
+  border-radius: $radius-pill;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+@mixin scrollbar($thumb: $slate-300, $track: transparent) {
+  &::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  &::-webkit-scrollbar-track {
+    background: $track;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: $thumb;
+    border-radius: $radius-pill;
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+}
+
+@mixin respond-below($bp) {
+  @media (max-width: ($bp - 1px)) {
+    @content;
+  }
+}
+
+@mixin respond-above($bp) {
+  @media (min-width: $bp) {
+    @content;
+  }
+}
