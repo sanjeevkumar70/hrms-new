@@ -18,6 +18,7 @@ import { fetchLeaveBalance } from '@/redux/slices/leaveSlice'
 import { FiPlus, FiEdit, FiTrash2, FiEye, FiSearch, FiUserX, FiDownload } from 'react-icons/fi'
 import { formatDate, cx, getInitials } from '@/utils'
 import { toast } from 'react-toastify'
+import { motion } from 'framer-motion'
 
 const employeeSchema = Yup.object({
   firstName: Yup.string().required('First name required'),
@@ -167,33 +168,42 @@ const Employees = () => {
         }
       />
 
-      <Table
-        title="Employee Directory"
-        columns={columns}
-        data={list}
-        progressPending={loading || !list.length}
-        searchValue={search}
-        onSearchChange={setSearch}
-        searchPlaceholder="Search name, email, dept…"
-        pagination
-        paginationServer
-        paginationTotalRows={total || list.length}
-        paginationPerPage={10}
-        onChangePage={setPage}
-        currentPage={page}
-        onSort={(col, dir) => setSort({ sortBy: col.selector || col.name, sortDir: dir })}
-        sortServer
-        subHeaderComponent={
-          <div className="d-flex gap-2 align-items-center flex-wrap">
-            <span className="small text-muted">Dept:</span>
-            <select className="form-select form-select-sm" value={deptFilter} onChange={e => { setDeptFilter(e.target.value); setPage(1) }} style={{ width: 180 }}>
-              <option value="">All</option>
-              {departments.map(d => <option key={d.id} value={d.id}>{d.name}</option>)}
-            </select>
-          </div>
-        }
-      />
+      <motion.div
+        className="row g-4 mb-4"
+        initial="hidden"
+        animate="show"
+      >
+        <div className="col-lg-12">
+          <Table
+            title="Employee Directory"
+            columns={columns}
+            data={list}
+            className="table-responsive"
 
+            progressPending={loading || !list.length}
+            searchValue={search}
+            onSearchChange={setSearch}
+            searchPlaceholder="Search name, email, dept…"
+            pagination
+            paginationServer
+            paginationTotalRows={total || list.length}
+            paginationPerPage={10}
+            onChangePage={setPage}
+            currentPage={page}
+            onSort={(col, dir) => setSort({ sortBy: col.selector || col.name, sortDir: dir })}
+            sortServer
+            subHeaderComponent={
+              <div className="d-flex gap-2 align-items-center flex-wrap">
+                <span className="small text-muted">Dept:</span>
+                <select className="form-select form-select-sm" value={deptFilter} onChange={e => { setDeptFilter(e.target.value); setPage(1) }} style={{ width: 180 }}>
+                  <option value="">All</option>
+                  {departments.map(d => <option key={d.id} value={d.id}>{d.name}</option>)}
+                </select>
+              </div>
+            }
+          />
+        </div>
+      </motion.div>
       <Modal isOpen={modal.open} toggle={() => setModal({ open: false, mode: 'add', id: null })} size="lg" centered scrollable>
         <ModalHeader toggle={() => setModal({ open: false })}>
           {modal.mode === 'add' ? 'Add New Employee' : 'Edit Employee'}

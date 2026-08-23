@@ -13,6 +13,7 @@ import { dashboardService } from '@/services/dashboardService'
 import { FiDownload, FiFilter, FiRefreshCw, FiFileText, FiUser, FiCalendar, FiUsers } from 'react-icons/fi'
 import { toast } from 'react-toastify'
 import { cx, formatDate, formatDuration } from '@/utils'
+import { motion } from 'framer-motion'
 
 const TABS = [
   { id: 'attendance', label: 'Attendance Report', icon: FiFileText },
@@ -38,17 +39,17 @@ const Reports = () => {
   useEffect(() => {
     dispatch(fetchDepartments())
     dispatch(fetchEmployees({ perPage: 50 }))
-    ;(async () => {
-      const [a, b] = await Promise.all([
-        dashboardService.leaveStatistics(),
-        dashboardService.employeeGrowth(6),
-      ])
-      setChartOverview(a); setGrowth(b)
-    })()
+      ; (async () => {
+        const [a, b] = await Promise.all([
+          dashboardService.leaveStatistics(),
+          dashboardService.employeeGrowth(6),
+        ])
+        setChartOverview(a); setGrowth(b)
+      })()
   }, [dispatch])
 
   useEffect(() => {
-    ;(async () => {
+    ; (async () => {
       let data = []
       if (tab === 'attendance') {
         const res = await dispatch(fetchAttendanceHistory({ employeeId: emp || undefined, status: status || undefined, perPage: 50 }))
@@ -253,15 +254,23 @@ const Reports = () => {
           </ChartCard>
         </div>
       </div>
-
-      <Table
-        title={`${TABS.find(t => t.id === tab).label} — Results`}
-        columns={columns}
-        data={rows}
-        pagination
-        paginationPerPage={15}
-        searchPlaceholder={`Search ${tab} records…`}
-      />
+      <motion.div
+        className="row g-4 mb-4"
+        initial="hidden"
+        animate="show"
+      >
+        <div className="col-lg-12">
+          <Table
+            title={`${TABS.find(t => t.id === tab).label} — Results`}
+            columns={columns}
+            className="table-responsive"
+            data={rows}
+            pagination
+            paginationPerPage={15}
+            searchPlaceholder={`Search ${tab} records…`}
+          />
+        </div>
+      </motion.div>
     </div>
   )
 }

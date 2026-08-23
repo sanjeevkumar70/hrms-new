@@ -5,6 +5,7 @@ import Table from '@/components/common/Table'
 import PageHeader from '@/components/common/PageHeader'
 import { leaveApprovalData } from '@/data'
 import './approvals.scss'
+import { motion } from 'framer-motion'
 
 const Approvals = () => {
   const [statusFilter, setStatusFilter] = useState('')
@@ -212,49 +213,55 @@ const Approvals = () => {
         subtitle="View and manage your team leave requests."
       />
 
-      <div className="row">
-        <Table
-          title="Team Leave Approvals"
-          columns={columns}
-          data={filteredLeaves}
-          pagination
-          paginationPerPage={10}
-          subHeaderComponent={
-            <div className="d-flex align-items-center gap-2">
-              <select
-                className="form-select form-select-sm"
-                value={statusFilter}
-                onChange={(e) =>
-                  setStatusFilter(e.target.value)
-                }
-                style={{ width: '150px' }}
-              >
-                <option value="">All Status</option>
-                <option value="pending">
-                  Pending
-                </option>
-                <option value="approved">
-                  Approved
-                </option>
-                <option value="rejected">
-                  Rejected
-                </option>
-              </select>
-
-              {statusFilter && (
-                <button
-                  type="button"
-                  className="btn btn-sm btn-outline-secondary"
-                  onClick={() => setStatusFilter('')}
+      <motion.div
+        className="row g-4 mb-4"
+        initial="hidden"
+        animate="show"
+      >
+        <div className="col-lg-12">
+          <Table
+            title="Team Leave Approvals"
+            className="table-responsive"
+            columns={columns}
+            data={filteredLeaves}
+            pagination
+            paginationPerPage={10}
+            subHeaderComponent={
+              <div className="d-flex align-items-center gap-2">
+                <select
+                  className="form-select form-select-sm"
+                  value={statusFilter}
+                  onChange={(e) =>
+                    setStatusFilter(e.target.value)
+                  }
+                  style={{ width: '150px' }}
                 >
-                  Clear
-                </button>
-              )}
-            </div>
-          }
-        />
-      </div>
+                  <option value="">All Status</option>
+                  <option value="pending">
+                    Pending
+                  </option>
+                  <option value="approved">
+                    Approved
+                  </option>
+                  <option value="rejected">
+                    Rejected
+                  </option>
+                </select>
 
+                {statusFilter && (
+                  <button
+                    type="button"
+                    className="btn btn-sm btn-outline-secondary"
+                    onClick={() => setStatusFilter('')}
+                  >
+                    Clear
+                  </button>
+                )}
+              </div>
+            }
+          />
+        </div>
+      </motion.div>
       {/* Confirmation Modal */}
       {approvalModal.show && (
         <div

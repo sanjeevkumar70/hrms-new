@@ -11,8 +11,23 @@
     color: white;
     background-size: 300%;
   }
+}
 
+.table-responsive {
+  overflow-x: auto !important;
+  -webkit-overflow-scrolling: touch !important;
+  width: 100%;
+  [role="table"] {
+    width: 100% ;
+  }
+}
 
+@media (max-width: 767px) {
+  .table-responsive {
+    width: 93vw;
+    [role="table"] {
+    }
+  }
 }
 
 .modal-dialog-scrollable .modal-content {

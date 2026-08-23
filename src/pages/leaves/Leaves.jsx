@@ -175,6 +175,7 @@ const Leaves = () => {
           <Table
             title="My Leave Requests"
             columns={leaveHistoryColumns}
+            className="table-responsive"
             data={filteredLeaves}
             pagination
             paginationPerPage={10}
