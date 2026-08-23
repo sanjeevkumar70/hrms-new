@@ -1,0 +1,39 @@
+.approvals-wraapper {
+    .modal-content {
+        .modal-header {
+            padding: 10px 20px;
+        }
+        .modal-body {
+            padding:5px 10px;
+            h5{
+                font-size: 16px;
+            }
+            p{
+                font-size: 14px;
+            }
+            .text-success{
+                height: 36px;
+            }
+
+            .small {
+                font-size: 12px;
+
+                .modal-content {
+                    .modal-footer {
+
+                        padding: 5px;
+
+                        button {
+                            padding: 5px 12px;
+                            margin: 0;
+                            font-size: 12px;
+
+                        }
+
+                    }
+                }
+            }
+
+        }
+    }
+}

@@ -1,0 +1,606 @@
+.punch-card {
+  width: 100%;
+  border-radius: 24px !important;
+  background: #ffffff;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+
+  .punch-card-body {
+    padding: 28px 55px 40px;
+
+    /* =========================
+       HEADER
+    ========================= */
+
+    .punch-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+
+      .punch-title {
+        margin: 0;
+        font-size: 18px;
+        font-weight: 700;
+        color: #111827;
+      }
+
+      .punch-clock-icon {
+        flex-shrink: 0;
+        font-size: 18px;
+        color: #1465f3;
+      }
+
+      .office-hours {
+        flex-shrink: 0;
+        font-weight: 600;
+        color: #606368;
+        background: #f0f0f0a1;
+        padding: 8px 30px;
+        border: 1px solid #bdbdbd;
+        border-radius: 12px;
+        font-size: 14px;
+        white-space: nowrap;
+      }
+    }
+
+    /* =========================
+       DIVIDER
+    ========================= */
+
+    .punch-divider {
+      margin: 20px 0 40px;
+      border: 0;
+      border-top: 1px solid #e8edf3;
+      opacity: 1;
+    }
+
+    /* =========================
+       STATUS
+    ========================= */
+
+    .status-section {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-left: -5px;
+
+      .status-indicator {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background: #d1d1d1;
+        position: relative;
+        flex-shrink: 0;
+
+        &::after {
+          content: "";
+          position: absolute;
+          width: 14px;
+          height: 14px;
+          background: #20bc8d;
+          border-radius: 50%;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+        }
+      }
+
+      .status-title {
+        font-size: 24px;
+        font-weight: 700;
+        color: #272b30;
+        margin: 0 0 6px;
+      }
+
+      .status-badge {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 4px 10px;
+        border: 2px solid #61d7b4;
+        border-radius: 20px;
+        color: #20bd91;
+        background: #effbf7;
+        font-size: 12px;
+        font-weight: 600;
+        line-height: 1;
+
+        .status-dot {
+          width: 8px;
+          height: 8px;
+          border-radius: 50%;
+          background: #54cda9;
+          flex-shrink: 0;
+        }
+      }
+    }
+
+    /* =========================
+       TIMER + PUNCH BUTTON
+    ========================= */
+
+    .timer-section {
+      margin-top: 45px;
+      row-gap: 30px;
+
+      .timer {
+        color: #285ce6;
+        font-size: clamp(32px, 4vw, 48px);
+        line-height: 1;
+        font-weight: 700;
+        letter-spacing: -3px;
+        text-align: left;
+        white-space: nowrap;
+      }
+
+      .punch-wrapper {
+        display: flex;
+        align-items: center;
+      }
+
+      .punch-buttons {
+        display: flex;
+        flex-direction: column;
+        margin-left: auto;
+        min-width: 220px;
+
+        .punch-btn {
+          width: 100%;
+          min-height: 52px;
+          padding: 10px 20px;
+
+          border: none !important;
+          border-radius: 40px !important;
+
+          display: flex !important;
+          align-items: center;
+          justify-content: center;
+          gap: 14px;
+
+          cursor: pointer;
+
+          font-size: 14px !important;
+          font-weight: 600 !important;
+
+          box-shadow: 0 12px 25px rgba(0, 0, 0, 0.08);
+
+          transition:
+            transform 0.2s ease,
+            box-shadow 0.2s ease;
+
+          svg {
+            flex-shrink: 0;
+            font-size: 18px;
+          }
+
+          &:hover:not(:disabled) {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.12);
+          }
+
+          &:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+          }
+        }
+
+        .punch-in-btn {
+          background: linear-gradient(90deg,
+              #17d498,
+              #457e6c) !important;
+
+          color: #ffffff !important;
+        }
+
+        .punch-out-btn {
+          background: linear-gradient(90deg,
+              #ff627d,
+              #f84161) !important;
+
+          color: #ffffff !important;
+        }
+      }
+    }
+
+    /* =========================
+       LOCATION + WORKED HOURS
+    ========================= */
+
+    .work-location-wrapper {
+
+      margin-top: 30px !important;
+    }
+
+    .location-section {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+      color: #666666;
+      font-size: 16px;
+
+      min-width: 0;
+
+      .location-icon {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+
+        padding: 5px 7px;
+
+        border: 1px solid #bdbdbd;
+        border-radius: 5px;
+
+        font-size: 14px;
+        background: #f0f0f0a1;
+
+        flex-shrink: 0;
+      }
+
+      >span:last-child {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+    }
+
+    .worked-hours {
+      display: flex;
+      justify-content: flex-end;
+
+      .info {
+        min-width: 220px;
+        flex-shrink: 0;
+
+        font-weight: 600;
+        color: #606368;
+        background: #f0f0f0a1;
+
+        padding: 8px 30px;
+
+        border: 1px solid #bdbdbd;
+        border-radius: 12px;
+
+        font-size: 14px;
+
+        white-space: nowrap;
+      }
+    }
+  }
+}
+
+
+/* =====================================================
+   LARGE DESKTOP
+===================================================== */
+
+@media (min-width: 1200px) {
+  .punch-card {
+    .punch-card-body {
+      padding: 30px 55px 40px;
+
+      .timer-section {
+        .timer {
+          font-size: 48px;
+        }
+
+       
+      }
+    }
+  }
+}
+
+
+/* =====================================================
+   DESKTOP / LAPTOP
+===================================================== */
+
+@media (min-width: 960px) and (max-width: 1199px) {
+  .punch-card {
+    .punch-card-body {
+      padding: 28px 35px 35px;
+
+      .timer-section {
+        .punch-wrapper {
+          display: flex;
+          justify-content: flex-end;
+        }
+      }
+    }
+  }
+}
+
+
+/* =====================================================
+   TABLET
+===================================================== */
+
+@media (min-width: 768px) and (max-width: 959px) {
+  .punch-card {
+    border-radius: 20px !important;
+
+    .punch-card-body {
+      padding: 25px 30px 30px;
+
+      .punch-header {
+        .punch-title {
+          font-size: 17px;
+        }
+
+        .office-hours {
+          padding: 7px 18px;
+          font-size: 13px;
+        }
+      }
+
+      .punch-divider {
+        margin: 18px 0 30px;
+      }
+
+      .status-section {
+        .status-title {
+          font-size: 21px;
+        }
+      }
+
+      .timer-section {
+        margin-top: 35px;
+
+        .timer {
+          font-size: clamp(30px, 5vw, 42px);
+          letter-spacing: -2px;
+        }
+
+        .punch-wrapper {
+          display: flex;
+          justify-content: flex-end;
+        }
+
+        .punch-buttons {
+          width: 100%;
+          max-width: 280px;
+          gap: 16px;
+
+          .punch-btn {
+            min-height: 48px;
+            font-size: 13px !important;
+
+            svg {
+              font-size: 17px;
+            }
+          }
+        }
+      }
+
+      .work-location-wrapper {
+        gap: 15px;
+      }
+
+      .location-section {
+        font-size: 14px;
+      }
+
+      .worked-hours {
+        padding: 7px 15px;
+        font-size: 13px;
+      }
+    }
+  }
+}
+
+
+/* =====================================================
+   MOBILE
+===================================================== */
+
+@media (max-width: 767px) {
+  .punch-card {
+    border-radius: 18px !important;
+
+    .punch-card-body {
+      padding: 22px 20px 25px;
+
+      /* Header */
+
+      .punch-header {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 14px;
+
+        >div:first-child {
+          gap: 10px !important;
+        }
+
+        .punch-title {
+          font-size: 18px;
+        }
+
+        .punch-clock-icon {
+          font-size: 17px;
+        }
+
+        .office-hours {
+          width: 100%;
+          padding: 7px 12px;
+          font-size: 13px;
+          text-align: center;
+          white-space: normal;
+        }
+      }
+
+      /* Divider */
+
+      .punch-divider {
+        margin: 20px 0 28px;
+      }
+
+      /* Status */
+
+      .status-section {
+        margin-left: 0;
+        gap: 10px;
+
+        .status-indicator {
+          width: 28px;
+          height: 28px;
+
+          &::after {
+            width: 13px;
+            height: 13px;
+          }
+        }
+
+        .status-title {
+          font-size: 19px;
+          margin-bottom: 5px;
+        }
+
+        .status-badge {
+          font-size: 11px;
+          padding: 4px 9px;
+        }
+      }
+
+      /* Timer */
+
+      .timer-section {
+        margin-top: 35px;
+
+        .timer {
+          width: 100%;
+          text-align: center;
+
+          font-size: clamp(34px, 12vw, 52px);
+          letter-spacing: -2px;
+
+          margin-bottom: 5px;
+        }
+
+        /* Button wrapper */
+
+        .punch-wrapper {
+          display: block;
+          width: 100%;
+        }
+
+        .punch-buttons {
+          width: 100%;
+          margin: 0;
+
+          gap: 15px;
+
+          .punch-btn {
+            min-height: 52px;
+            padding: 9px 15px;
+
+            font-size: 14px !important;
+
+            svg {
+              font-size: 17px;
+            }
+          }
+        }
+      }
+
+      /* Location */
+
+      .work-location-wrapper {
+        flex-direction: column;
+        align-items: stretch !important;
+        gap: 15px;
+
+        margin-top: 25px !important;
+      }
+
+      .location-section {
+        width: 100%;
+        font-size: 14px;
+
+        .location-icon {
+          padding: 4px 6px;
+        }
+      }
+
+      /* Worked hours */
+
+      .worked-hours {
+        width: 100%;
+        text-align: center;
+
+        padding: 8px 12px;
+        font-size: 13px;
+      }
+    }
+  }
+}
+
+
+/* =====================================================
+   SMALL MOBILE
+===================================================== */
+
+@media (max-width: 480px) {
+  .punch-card {
+    border-radius: 15px !important;
+
+    .punch-card-body {
+      padding: 18px 15px 22px;
+
+      .punch-header {
+        .punch-title {
+          font-size: 17px;
+        }
+
+        .office-hours {
+          font-size: 12px;
+        }
+      }
+
+      .status-section {
+        .status-title {
+          font-size: 18px;
+        }
+      }
+
+      .timer-section {
+        .timer {
+          font-size: clamp(32px, 11vw, 45px);
+        }
+      }
+
+      .location-section {
+        font-size: 13px;
+      }
+
+      .worked-hours {
+        font-size: 12px;
+      }
+    }
+  }
+}
+
+
+/* =====================================================
+   EXTRA SMALL MOBILE
+===================================================== */
+
+@media (max-width: 360px) {
+  .punch-card {
+    .punch-card-body {
+      padding: 16px 12px 20px;
+
+      .timer-section {
+        .timer {
+          font-size: 30px;
+          letter-spacing: -1px;
+        }
+      }
+
+      .punch-buttons {
+        .punch-btn {
+          font-size: 13px !important;
+        }
+      }
+    }
+  }
+}
