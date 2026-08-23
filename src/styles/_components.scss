@@ -1092,9 +1092,12 @@
   .modal-content .form-label,
   .modal-content .form-select 
   ,.modal-content .form-control
-  ,option
+  ,option,.input-group>.form-control
   {
     color: rgb(31, 29, 29);
+  }
+  .input-group>.form-control{
+        border: 1px solid #e2e8f0;
   }
 
   .modal-content .form-control,

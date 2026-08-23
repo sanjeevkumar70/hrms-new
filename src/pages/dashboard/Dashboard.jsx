@@ -138,7 +138,8 @@ const Dashboard = () => {
       />
 
 
-      <motion.div className="row g-4 mb-4"
+      <motion.div
+        className="row g-4 mb-4"
         initial="hidden"
         animate="show"
       >
@@ -146,15 +147,19 @@ const Dashboard = () => {
           <PunchControls />
         </div>
       </motion.div>
-
-
-      <div className="row g-4 mb-4">
-        <AttendanceSummaryCard
+      <motion.div
+        className="row g-4 mb-4"
+        initial="hidden"
+        animate="show"
+      >
+        <div className="col-lg-12">
+          <AttendanceSummaryCard
           data={cards}
           title="📊 Attendance Summary"
           period="Last 30 days"
         />
-      </div>
+        </div>
+      </motion.div>
 
       {!perms.isEmployee && (
         <motion.div

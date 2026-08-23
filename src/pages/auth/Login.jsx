@@ -34,10 +34,19 @@ const Login = () => {
   const [showDemo, setShowDemo] = useState(false)
   const redirect = location.state?.from?.pathname || '/dashboard'
 
-  const { register, handleSubmit, formState: { errors } } = useForm({
+  const {
+    register,
+    handleSubmit,
+    setValue,
+    formState: { errors },
+  } = useForm({
     resolver: yupResolver(schema),
-    defaultValues: { email: '', password: '', remember: true },
-  })
+    defaultValues: {
+      email: "",
+      password: "",
+      remember: true,
+    },
+  });
 
   const onSubmit = async (values) => {
     const res = await dispatch(login({ email: values.email, password: values.password }))
@@ -46,10 +55,17 @@ const Login = () => {
     }
   }
 
-  const quickFill = (acc) => {
-    document.getElementsByName('email')[0].value = acc.email
-    document.getElementsByName('password')[0].value = acc.password
-  }
+const quickFill = (account) => {
+  setValue("email", account.email, {
+    shouldValidate: true,
+    shouldDirty: true,
+  });
+
+  setValue("password", account.password, {
+    shouldValidate: true,
+    shouldDirty: true,
+  });
+};
 
   return (
     <>

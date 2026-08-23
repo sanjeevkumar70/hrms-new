@@ -165,63 +165,70 @@ const Leaves = () => {
       </div>
 
       {/* Leave History */}
-      <div className="row">
-        <Table
-          title="My Leave Requests"
-          columns={leaveHistoryColumns}
-          data={filteredLeaves}
-          pagination
-          paginationPerPage={10}
-          subHeaderComponent={
-            <div className="d-flex align-items-center gap-2">
+      <motion.div
+        className="row g-4 mb-4"
+        initial="hidden"
+        animate="show"
+      >
+        <div className="col-lg-12">
 
-              {/* Status Filter */}
-              <select
-                className="form-select form-select-sm"
-                value={statusFilter}
-                onChange={e => setStatusFilter(e.target.value)}
-                style={{ width: '150px' }}
-              >
-                <option value="">All Status</option>
-                <option value="pending">Pending</option>
-                <option value="approved">Approved</option>
-                <option value="rejected">Rejected</option>
-              </select>
+          <Table
+            title="My Leave Requests"
+            columns={leaveHistoryColumns}
+            data={filteredLeaves}
+            pagination
+            paginationPerPage={10}
+            subHeaderComponent={
+              <div className="d-flex align-items-center gap-2">
 
-              {/* Year Filter */}
-              <select
-                className="form-select form-select-sm"
-                value={yearFilter}
-                onChange={e => setYearFilter(e.target.value)}
-                style={{ width: '120px' }}
-              >
-                <option value="">All Years</option>
-
-                {years.map(year => (
-                  <option key={year} value={year}>
-                    {year}
-                  </option>
-                ))}
-              </select>
-
-              {/* Clear */}
-              {(statusFilter || yearFilter) && (
-                <button
-                  type="button"
-                  className="btn btn-sm btn-outline-secondary"
-                  onClick={() => {
-                    setStatusFilter('')
-                    setYearFilter('')
-                  }}
+                {/* Status Filter */}
+                <select
+                  className="form-select form-select-sm"
+                  value={statusFilter}
+                  onChange={e => setStatusFilter(e.target.value)}
+                  style={{ width: '150px' }}
                 >
-                  Clear
-                </button>
-              )}
+                  <option value="">All Status</option>
+                  <option value="pending">Pending</option>
+                  <option value="approved">Approved</option>
+                  <option value="rejected">Rejected</option>
+                </select>
 
-            </div>
-          }
-        />
-      </div>
+                {/* Year Filter */}
+                <select
+                  className="form-select form-select-sm"
+                  value={yearFilter}
+                  onChange={e => setYearFilter(e.target.value)}
+                  style={{ width: '120px' }}
+                >
+                  <option value="">All Years</option>
+
+                  {years.map(year => (
+                    <option key={year} value={year}>
+                      {year}
+                    </option>
+                  ))}
+                </select>
+
+                {/* Clear */}
+                {(statusFilter || yearFilter) && (
+                  <button
+                    type="button"
+                    className="btn btn-sm btn-outline-secondary"
+                    onClick={() => {
+                      setStatusFilter('')
+                      setYearFilter('')
+                    }}
+                  >
+                    Clear
+                  </button>
+                )}
+
+              </div>
+            }
+          />
+        </div>
+      </motion.div>
 
       {showApplyLeaveModal && (
         <div

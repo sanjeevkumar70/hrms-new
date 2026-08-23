@@ -67,16 +67,29 @@ const Attendance = () => {
         }
       />
 
-      <div className="row g-4 mb-4">
-        <AttendanceSummaryCard
-          data={attendanceSummary}
-          title="📊 Attendance Summary"
-          period="Last 30 days"
-        />
-      </div>
 
-      <div className="row">
-        <Table
+      <motion.div
+        className="row g-4 mb-4"
+        initial="hidden"
+        animate="show"
+      >
+        <div className="col-lg-12">
+          <AttendanceSummaryCard
+            data={attendanceSummary}
+            title="📊 Attendance Summary"
+            period="Last 30 days"
+          />
+        </div>
+      </motion.div>
+
+
+      <motion.div
+        className="row g-4 mb-4"
+        initial="hidden"
+        animate="show"
+      >
+        <div className="col-lg-12">
+         <Table
           title="Attendance History"
           columns={attendanceHistoryColumns}
           data={attendanceHistory || []}
@@ -89,8 +102,8 @@ const Attendance = () => {
             </span>
           }
         />
-
-      </div>
+        </div>
+      </motion.div>
     </div>
   )
 }
